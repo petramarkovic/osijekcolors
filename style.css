@@ -1,0 +1,232 @@
+:root {
+    --font: "Poppins", sans-serif;
+    --regular: 400;
+    --medium: 500;
+    --semibold: 600;
+    --bold: 700;
+    --extrabold: 800;
+    --black: #000;
+    --white: #fff;
+    --primary-color: #363636;
+    --secondary-color: #fafaff;
+    --transition: all 250ms ease-in-out;
+    --transition-slow: all 450ms ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: var(--font);
+    overflow: hidden;
+}
+
+.scroll-disabled {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+}
+
+.sr-only {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.wrap {
+    max-width: 1440px;
+    padding: 0 20px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.header {
+    width: 100%;
+    padding: 30px 0;
+    position: relative;
+}
+
+.header__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav {
+    margin-left: auto;
+}
+
+.nav__menu-open {
+    background: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.nav__menu-open-icon {
+    position: absolute;
+    top: calc(50% - 5px);
+    width: 100%;
+    left: 0;
+    height: 1px;
+    background-color: var(--secondary-color);
+    display: block;
+}
+
+.nav__menu-open-icon::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+    left: 0;
+    height: 1px;
+    background-color: var(--secondary-color);
+    display: block;
+}
+
+@media screen and (min-width: 768px) {
+    .nav__menu-open {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__menu-open {
+        display: flex;
+    }
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    transition: var(--transition-slow);
+}
+
+@media screen and (max-width: 768px) {
+    .nav__list {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(100%);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 50px;
+    }
+
+    .nav--active .nav__list {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .nav__item:not(:last-of-type) {
+        margin-right: 16px;
+    }    
+}
+
+@media screen and (max-width: 768px) {
+    .nav__item:not(:last-of-type) {
+        margin-bottom: 30px;
+    }
+}
+
+.nav__item-close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+
+.nav__item-close-btn-icon {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    height: 1px;
+    background-color: var(--secondary-color);
+    display: block;
+    transform: rotate(45deg);
+}
+
+.nav__item-close-btn-icon::after {
+    content: '';
+    position: absolute;
+    bottom: 50%;
+    width: 100%;
+    left: 0;
+    height: 1px;
+    background-color: var(--secondary-color);
+    display: block;
+    transform: rotate(-90deg);
+}
+
+@media screen and (min-width: 768px) {
+    .nav__item-close {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .nav__item-close {
+        display: flex;
+    }
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1200px) {
+    .nav__link:hover {
+        text-decoration: underline;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .nav__link {
+       font-size: 18px;
+       line-height: 18px;
+    }    
+}
+
+@media screen and (max-width: 768px) {
+    .nav__link {
+        font-size: 48px;
+        line-height: 48px;
+    }
+}
